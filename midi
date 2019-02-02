@@ -1,0 +1,14 @@
+#!/bin/bash
+while true
+do
+	P=":0"
+	LC1="$(aconnect -l | grep ": 'Launch Control XL'" | awk '{print $2}' | tr -d ':' | head -n 1)$P"
+	LC2="$(aconnect -l | grep ": 'Launch Control XL'" | awk '{print $2}' | tr -d ':' | tail -n 1)$P"
+	CI="$(aconnect -l | grep ": 'Circuit'" | awk '{print $2}' | tr -d ':')$P"
+	aconnect $LC1 $CI 
+	aconnect $LC2 $CI 
+	sleep 3
+done
+
+
+
